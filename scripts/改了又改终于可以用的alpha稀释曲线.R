@@ -1,6 +1,6 @@
 
 
-raw <- read.delim("asv_table_only.csv", sep = ',', stringsAsFactors = FALSE, check.names = FALSE)
+raw <- read.delim("temperary_data/asv_table_only.csv", sep = ',', stringsAsFactors = FALSE, check.names = FALSE)
 # 提取样品名称，保留前两个字符
 for (i in 1:ncol(raw)) {
 samples <- unique(substr(colnames(raw), 1,2))
