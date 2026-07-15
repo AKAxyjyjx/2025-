@@ -1,12 +1,12 @@
 
 # 导入数据并整理
-bacteria <- read.delim("phylum_rel.txt", row.names = 1, sep = '\t', stringsAsFactors = FALSE, check.names = FALSE)
+bacteria <- read.delim("temperary_data/phylum_rel.txt", row.names = 1, sep = '\t', stringsAsFactors = FALSE, check.names = FALSE)
 # 每一行求和，并添加在最后一列
 bacteria$sum <- rowSums(bacteria)
 # 按照sum列排序
 bacteria <- bacteria[order(bacteria$sum, decreasing = TRUE),]
 # 导出表格
-#write.table(bacteria, "C:/Users/15428/Desktop/家庭数据/ASV结果汇总/水平堆积柱状_fungus_phylum.txt", sep = '\t', quote = FALSE)
+#write.table(bacteria, "C:状_fungus_phylum.txt", sep = '\t', quote = FALSE)
 #这一部分是拖到excel里手操哦，整理导出的文件，如果分类多于10个的话可以把多的一部分加和在一起，命名为Others
 # ============================================
 # 9个最高丰度的 + 1个 "Others" = 10行
@@ -54,7 +54,7 @@ bacteria_top10 <- rbind(bacteria_avg[1:9, c("Phylum", setdiff(colnames(bacteria_
 bacteria_top10 <- bacteria_top10[, !names(bacteria_top10) %in% "sum"]
 
 # 导入数据并整理
-#bacteria <- read.delim("C:/Users/15428/Desktop/家庭数据/ASV结果汇总/水平堆积柱状_fungus_phylum.txt", row.names = 1, sep = '\t', stringsAsFactors = FALSE, check.names = FALSE)
+#bacteria <- read.delim("C:积柱状_fungus_phylum.txt", row.names = 1, sep = '\t', stringsAsFactors = FALSE, check.names = FALSE)
 # 加一列行名，便于后续的长宽转换
 #bacteria_df <- cbind(Phylum = row.names(bacteria_top10), bacteria_top10)
 # 将bacteria转换为长格式
@@ -103,6 +103,6 @@ ggbarplot(bacteria_plot, x = "Sample", y="Abundance", color="black", fill="Phylu
 
 
 # 将图片以.pdf的格式导出
-ggsave("水平堆积柱状_bacteria_phylum.pdf", width = 8, height = 5, units = "in")
+ggsave("output/水平堆积柱状_bacteria_phylum.pdf", width = 8, height = 5, units = "in")
 
 
