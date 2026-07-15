@@ -27,54 +27,55 @@
 
 本项目包含以下分析模块：
 
-```markdown
 ## 核心分析与关键发现
 
 ### 发现一：淹水重塑了细菌群落结构
 
 **门水平上**，所有样本中优势菌门为 **Proteobacteria** 和 **Chloroflexi**。随着淹水深度增加，**Proteobacteria** 相对丰度上升，而 **Acidobacteria** 下降，表明淹水筛选出了适应缺氧环境的菌群。
 
-![门水平堆积柱状图](./output/phylum_barplot.png)
+![门水平堆积柱状图](./output/水平堆积柱状_bacteria_phylum.pdf)
 
 **Alpha多样性**（Shannon指数）显示，中度淹水（5cm）条件下多样性最高，而高淹水（9cm）显著降低，提示极端淹水抑制了部分敏感菌群。
 
-![Alpha多样性](./output/alpha_diversity.png)
+![Alpha多样性](./output/细菌Alpha多样性（2）.pdf)
 
 **Beta多样性**（PCoA分析）显示，低、中、高三组淹水处理的样本明显分离（PERMANOVA，p < 0.05），说明淹水深度是驱动细菌群落结构变化的核心因素。
 
-![Beta多样性 PCoA](./output/beta_diversity_pcoa.png)
+![Beta多样性 PCoA](./output/细菌beta多样性（没有椭圆有图例）.pdf)
 
 
 ### 发现二：特定菌群对淹水有规律性响应
 
 **属水平热图**显示，**Geobacter**、**Anaeromyxobacter** 等厌氧相关属在高淹水处理中显著富集，而 **Nitrospira** 等好氧菌属丰度下降，印证了微生物从好氧到厌氧的演替过程。
 
-![属水平热图](./output/genus_heatmap.png)
+![属水平热图](./output/细菌属水平热图.pdf)
 
 
-### 发现三：重金属在水香薷中的分配具有部位特异性
-
-在水香薷中，**Zn** 和 **Cu** 在根部的含量显著高于茎和叶，而 **Cd** 更倾向于转运至地上部分。随着淹水加深，根部重金属总量呈上升趋势。
-
-![重金属含量分布](./output/heavy_metal_contents.png)
-
-
-### 发现四：微生物-重金属存在显著关联
+### 发现三：微生物-重金属存在显著关联
 
 **Mantel test** 结果显示，细菌群落结构与土壤有效态 Cd、Pb 含量呈显著相关（r = 0.42，p < 0.01），表明特定菌群可能通过改变重金属形态间接影响其生物有效性。
 
+![Mantel test](./output/mantel_test.png)
+![Mantel test](./output/mantel_test.png)
 ![Mantel test](./output/mantel_test.png)
 
 **关键物种网络图**识别出 **Bacillus**、**Pseudomonas** 等核心菌属，它们在网络中起连接作用，且其丰度与有效态重金属浓度显著相关。
 
 ![关键物种网络图](./output/network_graph.png)
 
+![关键物种网络图](./output/network_graph.png)
 
-### 发现五：淹水深度是驱动群落变化的核心因子
+![关键物种网络图](./output/network_graph.png)
+
+![关键物种网络图](./output/network_graph.png)
+
+
+### 发现四：淹水深度是驱动群落变化的核心因子
 
 **冗余分析（RDA）** 表明，淹水深度和有效态 Cd 是解释细菌群落变异的最主要环境因子，分别解释了 23.4% 和 15.7% 的变异。这说明淹水不仅直接作用于植物，还通过重塑微生物群落间接影响重金属的迁移。
 
 ![RDA 分析](./output/rda_plot.png)
+
 
 
 ### 主要结论
@@ -87,10 +88,10 @@
 
 本研究的原始数据来自实验采样和 16S rRNA 高通量测序结果，因涉及正在审稿的论文内容，原始数据暂不公开。
 
-本仓库的 R 代码中包含 **模拟数据生成模块**，运行 `main_analysis.R` 即可生成结构一致的模拟数据来演示全部分析流程。
+本仓库的 R 代码中包含 **模拟数据生成模块**，运行 `main.R` 即可生成结构一致的模拟数据来演示全部分析流程。
 
 ```r
 # 快速运行
-# 1. 打开 main_analysis.R
+# 1. 打开 main.R
 # 2. 点击全选运行
 # 3. 所有图表自动生成到 ./output/ 文件夹
