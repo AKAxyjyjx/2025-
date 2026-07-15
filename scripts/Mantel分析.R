@@ -1,7 +1,7 @@
 
 # 读取otu表！可使用去除叶绿体、线粒体等的相对丰度或者绝对丰度的ASV表格(2中结果)，细菌和真菌放在一个文件夹里面，注意各有多少列
-otu <- read.table("asv_table_only.csv", header = T,  sep = ',')
-env <- read.table("env_data.csv", header = TRUE,
+otu <- read.table("temperary_data/asv_table_only.csv", header = T,  sep = ',')
+env <- read.table("temperary_data/env_data.csv", header = TRUE,
                   sep = ",")
 
 
@@ -94,4 +94,4 @@ p <-
 p
 
 # 保存图片
-ggsave("Cd-Mantel-test.pdf", width = 9, height = 8, units = "in")
+ggsave("output/Cd-Mantel-test.pdf", width = 9, height = 8, units = "in")
