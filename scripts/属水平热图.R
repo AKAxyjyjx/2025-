@@ -1,7 +1,7 @@
 
 
 # 导入数据，属相对丰度3不同分类水平物种数量统计/genus_rel
-asv <- read.table("genus_rel.txt", header = T, row.names = 1, sep = "\t", stringsAsFactors = F)
+asv <- read.table("temperary_data/genus_rel.txt", header = T, row.names = 1, sep = "\t", stringsAsFactors = F)
 # 每一行求和，并添加在最后一列
 asv$sum <- rowSums(asv)
 # 根据sum列的大小，对数据进行排序
@@ -86,4 +86,4 @@ p2 <- ggplot(asv_plot_long, aes(x = variable, y = Genus, fill = value)) +
 
 p2
 # 保存图片
-ggsave("C:/Users/15428/Desktop/家庭数据/ASV结果汇总/bac_真菌属水平热图.pdf", p2, width = 9, height = 8, dpi = 300)
+ggsave("output/bac属水平热图.pdf", p2, width = 9, height = 8, dpi = 300)
