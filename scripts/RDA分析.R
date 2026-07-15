@@ -1,9 +1,9 @@
 
 # 加载数据，包括ASV表（2中去除线粒体、叶绿体的表格）、样本分组信息以及环境因子数据
-data <- read.table(file="asv_table_only.csv", header=T,check.names=T ,row.names=1)
-group <- read.table(file="sample_group_info.csv", header=T,check.names=T,row.names=NULL )
+data <- read.table(file="temperary_data/asv_table_only.csv", header=T,check.names=T ,row.names=1)
+group <- read.table(file="temperary_data/sample_group_info.csv", header=T,check.names=T,row.names=NULL )
 rownames(group) <- group$sample
-env <- read.table(file="env_data.csv",header=T,check.names=T, fileEncoding = "UTF-8", sep = ",", row.names = 1)
+env <- read.table(file="temperary_data/env_data.csv",header=T,check.names=T, fileEncoding = "UTF-8", sep = ",", row.names = 1)
 sampledata <- t(data)
 
 
@@ -27,7 +27,7 @@ rda = rda(sampledata, env, scale = TRUE)
 # RDA得分
 rda.sample=data.frame(rda$CCA$u[,1:2]) #样本得分
 rda.sample$group = group$Group#添加分组
-#write.csv(rda.sample,file="C:/Users/15428/Desktop/家庭数据/RDA_fungus_meihuo_result.csv")
+#write.csv(rda.sample,file="RDA_fungus_meihuo_result.csv")
 rda.env=data.frame(rda$CCA$ biplot[,1:2]) #环境因子得分
 rda1 =round(rda$CCA$eig[1]/sum(rda$CCA$eig)*100,2) # 第一轴解释量
 rda2 =round(rda$CCA$eig[2]/sum(rda$CCA$eig)*100,2) # 第二轴解释量
@@ -101,7 +101,7 @@ ggplot(rda.sample, aes(RDA1, RDA2)) +
 
 
 # 保存图片
-ggsave("C:/Users/15428/Desktop/家庭数据/ASV结果汇总/RDA_fungus_meihuo_Zn.pdf",width=8,height=8,dpi=300)
+ggsave("output/RDA_fungus_meihuo_Cd.pdf",width=8,height=8,dpi=300)
 
 
 
