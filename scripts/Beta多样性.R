@@ -2,9 +2,9 @@
 
 # 基于Bray-Curtis距离的PCoA分析
 # 载入数据，先载入要测的相对丰度表,同Alpha多样性
-otu <- read.table("relative_table_only.csv", header = TRUE, row.names = 1, sep = "\t")
+otu <- read.table("temperary_data/relative_table_only.csv", header = TRUE, row.names = 1, sep = "\t")
 # 载入分组信息
-group <- read.table("sample_group_info.csv", header = TRUE, sep = ",")
+group <- read.table("temperary_data/sample_group_info.csv", header = TRUE, sep = ",")
 
 # 计算Bray-Curtis距离，dist表示该对象为一个距离矩阵
 distance_bray <- vegdist(t(otu), method="bray",diag=T, upper=T)
@@ -302,7 +302,7 @@ p_pcoa_bray <- ggplot(pcoa_bray_points, aes(V1, V2)) +
            fontface = "bold")
 
   # 其余主题设置保持不变...
-
+#为了生成多个不同版本的图片，我这里不会注释掉其中一个版本，由于相互覆盖，最后会是带标签的。
 print(p_pcoa_bray)
 
 
@@ -310,5 +310,5 @@ combined <- (p_pcoa_bray + theme(legend.position = "none")) |
   (p_NMDS_bray + theme(legend.position = "right"))
 print(combined)
 
-ggsave("细菌beta多样性.pdf", width = 28, height = 14, units = "in")
+ggsave("output/细菌beta多样性.pdf", width = 28, height = 14, units = "in")
 
