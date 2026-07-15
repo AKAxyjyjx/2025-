@@ -283,7 +283,7 @@ data <- generate_asv_table(
 
 save_asv_data <- function(
     data,                          # generate_asv_table() 返回的数据
-    output_dir = "/output"   # 输出目录
+    output_dir = "temperary_data/"   # 输出目录
 ) 
   
   # 1. 创建输出目录
@@ -304,11 +304,11 @@ save_asv_data <- function(
   }
   
   
-  write.csv(taxonomy_table, 
+  #write.csv(taxonomy_table, 
             file = paste0(output_dir, "taxonomy_table.csv"), 
             row.names = FALSE)
   write.csv(taxonomy_table, 
-            "taxonomy_table.csv", 
+            "temperary_data/taxonomy_table.csv", 
             row.names = FALSE)
   # ============================================
   # 保存不带分类的纯ASV表（样本为行）
@@ -329,13 +329,13 @@ save_asv_data <- function(
   
   # 每个样本的分组
   df <- data$group_info[, c(2, 1)]
-  write.csv(df, 
+  #write.csv(df, 
             file = paste0(output_dir, "sample_group_info.csv"), 
             row.names = FALSE)
   
   
   write.csv(df, 
-            "sample_group_info.csv", 
+            "temperary_data/sample_group_info.csv", 
             row.names = FALSE)
 
   
@@ -394,4 +394,4 @@ env_data <- generate_environment_data(sample_names = all_samples, seed = 123)
 head(env_data)
   
   # 保存
-write.csv(env_data, "env_data.csv", row.names = FALSE)
+write.csv(env_data, "temperary_data/env_data.csv", row.names = FALSE)
