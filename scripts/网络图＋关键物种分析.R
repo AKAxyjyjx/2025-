@@ -1,8 +1,8 @@
 
 
 # 读取OTU/ASV相对丰度/绝对含量的原始数据表格
-otu <- read.table("asv_table_only.csv",sep=",", header=T)
-group <- read.table("sample_group_info.csv",sep=",", header=T)
+otu <- read.table("temperary_data/asv_table_only.csv",sep=",", header=T)
+group <- read.table("temperary_data/sample_group_info.csv",sep=",", header=T)
 # ============================================
 # 从ASV表中提取单个组的数据
 # ============================================
@@ -27,7 +27,7 @@ if (exists("otu1") && nrow(otu1) == nrow(otu2)) {
   rownames(otu2) <- rownames(otu1)
 }
 # 加上前面的筛选，这里剩下的属是样品覆盖度为3/5，导出筛选的数据
-write.table(otu2, file="bacteria_LH_sample.txt", quote=F, sep="\t", row.names=T, col.names=NA)
+write.table(otu2, file="temperary_data/bacteria_LH_sample.txt", quote=F, sep="\t", row.names=T, col.names=NA)
 
 # 读取矩阵，行为sample，列为genus，就是刚才导出的表格
 otu3 <- otu2
@@ -45,7 +45,7 @@ p <- p.adjust(occor.p, method = 'BH')
 occor.r[occor.p>0.05|abs(occor.r)<0.6] = 0
 diag(occor.r) <- 0
 # 将occor.r保存
-write.table(occor.r, file="bacteria_LH_相关性计算结果.txt", quote=F, sep="\t", row.names=T, col.names=NA)
+write.table(occor.r, file="temperary_data/bacteria_LH_相关性计算结果.txt", quote=F, sep="\t", row.names=T, col.names=NA)
 # 根据上述筛选的 r 值和 p 值保留数据
 z <- occor.r * occor.p
 # 将相关矩阵中对角线中的值（代表了自相关）转为 0
@@ -54,7 +54,7 @@ head(z)[1:6,1:6]
 z
 dim(z)
 # 得到邻接矩阵格式的网络文件（微生物属的相关系数矩阵）
-write.table(z, file="bacteria_LH_绘图矩阵.txt", quote=F, sep="\t", row.names=T, col.names=NA)
+write.table(z, file="temperary_data/bacteria_LH_绘图矩阵.txt", quote=F, sep="\t", row.names=T, col.names=NA)
 
 ##获得网络
 # 将邻接矩阵转化为 igraph 网络的邻接列表
@@ -68,7 +68,7 @@ g <- delete.vertices(g, names(degree(g)[degree(g) == 0]))
 
 ###在此处插入分类信息
 # 读取分类数据
-tax <- read.table("taxonomy_table.csv",
+tax <- read.table("temperary_data/taxonomy_table.csv",
                   header=TRUE, row.names=1, sep=",", stringsAsFactors=FALSE)
 
 # 确保分类数据与网络节点匹配
@@ -98,7 +98,7 @@ E(g)$cor[E(g)$correlation<0] <- -1
 g
 plot(g)
 #graphml 格式，可使用 gephi 软件打开并进行可视化编辑
-write_graph(g, 'bacteria_LH_网络图.graphml', format = 'graphml')
+write_graph(g, 'output/bacteria_LH_网络图.graphml', format = 'graphml')
 #write_graph(g, 'network.graphml', format = 'graphml')
 
 
@@ -142,16 +142,16 @@ nodes_list <- data.frame(
   modularity = V(igraph)$modularity
 )
 head(nodes_list)    #节点列表，包含节点名称、节点度、及其所划分的模块
-write.table(nodes_list, 'bacteria_LH_nodes_list.txt', sep = '\t', row.names = FALSE, quote = FALSE)
+write.table(nodes_list, 'temperary_data/bacteria_LH_nodes_list.txt', sep = '\t', row.names = FALSE, quote = FALSE)
 
 ##计算模块内连通度（Zi）和模块间连通度（Pi）
-source("C:/Users/15428/Desktop/高通量测序学习资料/R代码/zi_pi.r")
+source("script/zi_pi.r")
 
 #上述的邻接矩阵类型的网络文件
 adjacency_unweight 
 
 #节点属性列表，包含节点所划分的模块
-nodes_list <- read.delim('bacteria_LH_nodes_list.txt', row.names = 1, sep = '\t', check.names = FALSE)
+nodes_list <- read.delim('temperary_data/bacteria_LH_nodes_list.txt', row.names = 1, sep = '\t', check.names = FALSE)
 
 #两个文件的节点顺序要一致
 nodes_list <- nodes_list[rownames(adjacency_unweight), ]
@@ -194,5 +194,5 @@ ggplot(zi_pi, aes(among_module_connectivities, within_module_connectivities)) +
 
 
 # 将图片以.pdf的格式导出
-ggsave("C:/Users/15428/Desktop/家庭数据/ASV结果汇总/bacteria_LH_关键物种分析.pdf", width = 8, height = 6, units = "in")
+ggsave("output/bacteria_LH_关键物种分析.pdf", width = 8, height = 6, units = "in")
 
