@@ -1,7 +1,7 @@
 
 #relative2为注释信息（无误）+相对丰度的结果
 # 导入相对丰度表
-asv_raw <- read.table("relative_table_tax.txt", header = T, row.names = 1, sep = "\t")
+asv_raw <- read.table("temperary_data/relative_table_tax.txt", header = T, row.names = 1, sep = "\t")
 
 # 先处理门水平
 # 提取phylum
