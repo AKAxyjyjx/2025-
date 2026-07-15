@@ -31,7 +31,7 @@
 
 ### 发现一：淹水重塑了细菌群落结构
 
-**门水平上**，所有样本中优势菌门为 **Proteobacteria** 和 **Chloroflexi**。随着淹水深度增加，**Proteobacteria** 相对丰度上升，而 **Acidobacteria** 下降，表明淹水筛选出了适应缺氧环境的菌群。
+**门水平上**，所有样本中优势菌门为 **Acidobacteriota** 和 **Chloroflexi**。**Acidobacteriota**呈现出中期相对丰度随着水位高度上升，后期相对丰度却反之的情况，表明淹水条件与植物生长时期两者之间形成了独特的相互作用。相应的，**Chloroflexi**呈现出中期相比于前期相对丰度减小，后期低水位时相对丰度大幅上升，高水位反而再次减小的独特属性。
 
 ![门水平堆积柱状图](./output/水平堆积柱状_bacteria_phylum.pdf)
 
@@ -46,41 +46,53 @@
 
 ### 发现二：特定菌群对淹水有规律性响应
 
-**属水平热图**显示，**Geobacter**、**Anaeromyxobacter** 等厌氧相关属在高淹水处理中显著富集，而 **Nitrospira** 等好氧菌属丰度下降，印证了微生物从好氧到厌氧的演替过程。
+**属水平热图**显示出的菌群呈现数量小且种类多的情况，难以判别到属类的优势菌群。
 
 ![属水平热图](./output/细菌属水平热图.pdf)
 
 
-### 发现三：微生物-重金属存在显著关联
+### 发现三：重金属的不同形态与重金属在植物不同部分的吸收存在显著关联，且重金属与微生物群落的生长息息相关
 
-**Mantel test** 结果显示，细菌群落结构与土壤有效态 Cd、Pb 含量呈显著相关（r = 0.42，p < 0.01），表明特定菌群可能通过改变重金属形态间接影响其生物有效性。
+**Mantel test** 结果显示，绝大部分被检测的重金属，其特定形态可以影响植物的吸收以及不同植物部位的沉积。也许特定菌群也可能通过改变重金属形态间接影响其生物有效性。
 
-![Mantel test](./output/mantel_test.png)
-![Mantel test](./output/mantel_test.png)
-![Mantel test](./output/mantel_test.png)
+![Mantel test](./output/Cu-mantel-test.pdf)
+![Mantel test](./output/Mn-mantel-test.pdf)
+![Mantel test](./output/Ni-mantel-test.pdf)
+![Mantel test](./output/Pb-mantel-test.pdf)
+![Mantel test](./output/Cd-mantel-test.pdf)
+![Mantel test](./output/Cr-mantel-test.pdf)
+![Mantel test](./output/Zn-mantel-test.pdf)
 
-**关键物种网络图**识别出 **Bacillus**、**Pseudomonas** 等核心菌属，它们在网络中起连接作用，且其丰度与有效态重金属浓度显著相关。
+**关键物种网络图**识别出 **Acidobacteriae**、**Alphaproteobacteria**、**Ktedonobacteria** 等核心菌属，它们在网络中起连接作用，且其丰度与有效态重金属浓度显著相关。
 
-![关键物种网络图](./output/network_graph.png)
+![关键物种网络图](./output/bacteria_E.pdf)
 
-![关键物种网络图](./output/network_graph.png)
+![关键物种网络图](./output/bacteria_LM.pdf)
 
-![关键物种网络图](./output/network_graph.png)
+![关键物种网络图](./output/bacteria_MM.pdf)
 
-![关键物种网络图](./output/network_graph.png)
-
+![关键物种网络图](./output/E.png)
+![关键物种网络图](./output/LM.png)
+![关键物种网络图](./output/MM.png)
+这里就只举这几张图因为几乎所有的都大差不差了，最前面几乎都是这三个.
 
 ### 发现四：淹水深度是驱动群落变化的核心因子
 
-**冗余分析（RDA）** 表明，淹水深度和有效态 Cd 是解释细菌群落变异的最主要环境因子，分别解释了 23.4% 和 15.7% 的变异。这说明淹水不仅直接作用于植物，还通过重塑微生物群落间接影响重金属的迁移。
+**冗余分析（RDA）** 表明，不同金属元素的形态以及吸收受到环境影响，侧面证明了淹水对于土壤的理化环境变化将连锁作用于重金属形态和微生物群落。这说明淹水不仅直接作用于植物，还通过重塑微生物群落间接影响重金属的迁移。
 
-![RDA 分析](./output/rda_plot.png)
+![RDA 分析](./output/RDA_fungus_meihuo_Cd.pdf)
+![RDA 分析](./output/RDA_fungus_meihuo_Cr.pdf)
+![RDA 分析](./output/RDA_fungus_meihuo_Cu.pdf)
+![RDA 分析](./output/RDA_fungus_meihuo_Pb.pdf)
+![RDA 分析](./output/RDA_fungus_meihuo_Mn.pdf)
+![RDA 分析](./output/RDA_fungus_meihuo_Ni.pdf)
+![RDA 分析](./output/RDA_fungus_meihuo_Zn.pdf)
 
 
 
 ### 主要结论
 
-> 本研究初步揭示了淹水梯度通过改变土壤微生物群落结构，进而调控水香薷对重金属富集的潜在机制。其中，**厌氧菌群的富集**和 **Bacillus 等关键菌属**的潜在作用可能是关键驱动因素。
+> 本研究初步揭示了淹水梯度通过改变土壤微生物群落结构，进而调控水香薷对重金属富集的潜在机制。其
 
 > 以上所有图表均位于 `./output/` 文件夹中，可点击查看。
 
