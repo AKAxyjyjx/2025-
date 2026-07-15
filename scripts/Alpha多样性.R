@@ -2,14 +2,10 @@
 
 # Alpha多样性是反映样本丰富度和均匀度的综合指标
 ## 计算alpha多样性 所用数据为相对丰度中所得的相对丰度表格，名字叫relative-XXX.csv的。
-asv1 <- read.table("asv_table_only.csv", header=T, sep=",",stringsAsFactors = FALSE) 
+asv1 <- read.table("temperary_data/asv_table_only.csv", header=T, sep=",",stringsAsFactors = FALSE) 
 # 读取分组文件group。
-Group <- read.table("sample_group_info.csv", header = TRUE, sep = ",")
+Group <- read.table("temperary_data/sample_group_info.csv", header = TRUE, sep = ",")
 asv1_t <- t(asv1)
-
-# 检查 diversity 来自哪个包
-find("diversity")
-
 
 # 创建函数一步计算alpha多样性
 calculate_alpha <- function(otu){
@@ -178,4 +174,4 @@ print(p)
 
 
 # 将图片以.pdf的格式导出,图像堆积时记得调整大小
-ggsave("output/Alpha多样性", width = 28, height = 14, units = "in")
+ggsave("output/Alpha多样性.pdf", width = 28, height = 14, units = "in")
